@@ -321,6 +321,7 @@ a:hover {
 	border-radius: 0px 0px 10px 10px;
 	color: #707070;
 	box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.1);
+	min-height: 300px;
 }
 
 .poptrox-popup {
@@ -330,4 +331,12 @@ a:hover {
 
 .poptrox-popup .closer {
 	border-radius: 0px 10px 10px 0px;
+}
+
+#loading {
+  margin-top: 80px;
+}
+
+#box1.loading {
+  text-align: center;
 }

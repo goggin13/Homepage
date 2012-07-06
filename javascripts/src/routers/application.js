@@ -13,10 +13,17 @@
         '/about': 'about',
         '/contact': 'contact'
       },
+      show_loading: function() {
+        return ($('#box1')).addClass('loading').html('<img id="loading" src="images/loading.gif" alt="loading" />');
+      },
+      hide_loading: function() {
+        return ($('#box1')).removeClass('loading  ');
+      },
       home: function() {
         return console.log("home");
       },
       about: function() {
+        this.show_loading();
         return console.log("about");
       },
       blog: function() {
