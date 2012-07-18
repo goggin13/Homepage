@@ -13,27 +13,44 @@
         '/about': 'about',
         '/contact': 'contact'
       },
-      show_loading: function() {
-        return ($('#box1')).addClass('loading').html('<img id="loading" src="images/loading.gif" alt="loading" />');
+      show_view: function(view) {
+        return this.transition_content(function($box) {
+          return $box.removeClass('loading').html("").append(view.render().el).fadeIn();
+        });
       },
-      hide_loading: function() {
-        return ($('#box1')).removeClass('loading  ');
+      transition_content: function(callback) {
+        var $box;
+        $box = $('#box_content');
+        return $box.fadeOut((function() {
+          return callback($box);
+        }));
+      },
+      show_loading: function() {
+        return this.transition_content(function($box) {
+          return $box.addClass('loading').html('<img id="loading" src="images/loading.gif" alt="loading" />').fadeIn();
+        });
       },
       home: function() {
-        return console.log("home");
+        return this.show_view(new HomeView());
       },
       about: function() {
         this.show_loading();
         return console.log("about");
       },
       blog: function() {
-        return console.log("blog");
+        var blogs;
+        blogs = new BlogPosts();
+        return blogs.fetch().complete(function() {
+          return this.show_view(new BlogView({
+            collection: blogs
+          }));
+        });
       },
       projects: function() {
         return console.log("projects");
       },
       contact: function() {
-        return console.log("contact");
+        return this.show_view(new ContactView());
       }
     });
   });

@@ -13,25 +13,37 @@ jQuery ->
       '/about': 'about'
       '/contact': 'contact'
     
+    show_view: (view) ->
+      @transition_content ($box) ->
+        $box.removeClass('loading')
+            .html("")
+            .append(view.render().el)
+            .fadeIn()
+      
+    transition_content: (callback) ->
+      $box = ($ '#box_content')
+      $box.fadeOut (-> callback $box)
+              
     show_loading: ->
-      ($ '#box1').addClass('loading')
-                 .html '<img id="loading" src="images/loading.gif" alt="loading" />'
-    
-    hide_loading: ->
-      ($ '#box1').removeClass('loading  ')
+      @transition_content ($box) ->
+        $box.addClass('loading')
+            .html('<img id="loading" src="images/loading.gif" alt="loading" />')
+            .fadeIn()
     
     home: ->
-      console.log ("home")
-
+      @show_view(new HomeView())
+      
     about: ->
       @show_loading()
       console.log ("about")
-  
-    blog: ->
-      console.log("blog")
+      
+    blog: ->ir 
+      blogs = new BlogPosts()
+      blogs.fetch().complete ->
+        @show_view(new BlogView(collection: blogs))
     
     projects: ->
       console.log("projects")
     
     contact: ->
-      console.log("contact")
+      @show_view(new ContactView())

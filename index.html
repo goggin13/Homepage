@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <!--
 Design by Free CSS Templates
 http://www.freecsstemplates.org
@@ -10,18 +10,28 @@ Version    : 1.0
 Released   : 20120604
 
 -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" manifest="offline.appcache">
 <head>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<!-- <title>W!11 C0D3 4 (C0FF33||B33R||$$)</title>  -->
 <title>Fullycharge by FCT</title>
 <link href="stylesheets/index.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="shortcut icon" href="images/shortcut_icon.png" />
 </head>
 <body>
   
 <div id="header-wrapper">
 	<div id="header" class="container">
+	  
+	  <section id="cache" class='up_to_date'>
+      <span class='up_to_date'>The application is up to date</span>
+      <span class='updating'>Downloading new assets...</span>
+      <span class='dirty'>New assets are available; click here to get them!</span>
+      <progress class='updating' min="0" max="100" value="0">
+    </section>
+    
 		<div id="logo">
       <!-- <h1><a href="#home">W!11 C0D3 4 (C0FF33||B33R||$$)</a></h1>  -->
       <h1><a href="#home">Fullycharge</a></h1> 
@@ -29,11 +39,11 @@ Released   : 20120604
 	</div>
 	<div id="menu">
 		<ul>
-			<li><a href="#" class='push_nav'>Homepage</a></li>
+			<li><a href="#" class='push_nav'>Home</a></li>
 			<li><a href="#/blog" class='push_nav'>Blog</a></li>
 			<li><a href="#/about" class='push_nav'>About</a></li>
 			<li><a href="#/projects" class='push_nav'>Projects</a></li>
-			<li><a href="#/contact" class='push_nav'>Contact Us</a></li>
+			<li><a href="#/contact" class='push_nav'>Contact</a></li>
 		</ul>
 	</div>
 </div>
@@ -41,8 +51,8 @@ Released   : 20120604
 <div id="wrapper">
 	<div id="page">
 		<div id="box1">
-			<p> 
-			</p>
+      <div id='box_content'>
+      </div>
 		</div>
 	</div>
 </div>
@@ -54,10 +64,75 @@ Released   : 20120604
 <!-- end #footer -->
 </body>
 
+<script id="tpl_home_view" src="templates/home.js" type="text/template">
+  tpl_home_view
+</script>
+
+<script id='tpl_contact_view' type="text/template">
+<div class="contact_link">
+	<a target='_blank' href="http://stackoverflow.com/users/244355/goggin13">
+		<img src="http://stackoverflow.com/users/flair/244355.png" 
+				 width="208" 
+				 height="58" 
+				 alt="profile for goggin13 at Stack Overflow, Q&amp;A for professional and enthusiast programmers" 
+				 title="profile for goggin13 at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+  </a>
+</div>
+
+<div class="contact_link">
+  <a target='_blank' href='http://www.linkedin.com/profile/view?id=56436623'>
+    <img src="images/linkedin.jpeg" />
+  </a>
+</div>
+
+<div class="contact_link">		    
+  <a target='_blank' href='https://github.com/goggin13'>
+    <img src="images/github.png" />
+  </a>
+</div>
+
+<div class="contact_link">	      
+	<a target='_blank' href='http://www.facebook.com/profile.php?id=32701378'>
+		<img src="images/facebook.png" />
+	</a>
+</div>
+
+<div class="contact_link">	      
+	<a target='_blank' href='http://projecteuler.net'>
+		<img src="http://projecteuler.net/profile/goggin13.png" />
+	</a>
+</div>
+
+<div class="contact_link">	      
+	<a target='_blank' href='http://www.meetup.com/mysqlnyc/members/48860722'>
+		<img src="images/meetup.png" />
+	</a>
+</div>
+
+<div class="contact_link">	      
+	<a target='_blank' href='mailto:goggin13@gmail.com?Subject=Hello World'>
+		<img src="images/gmail.png" />
+	</a>
+</div>
+
+<div class="clear"></div>
+
+</script>
+
 <script type="text/javascript" src="javascripts/frameworks/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="javascripts/frameworks/underscore.js"></script>
 <script type="text/javascript" src="javascripts/frameworks/backbone.js"></script>
+<script type="text/javascript" src="javascripts/frameworks/mustache.js"></script>
+
+<script type="text/javascript" src="javascripts/src/models/blog.js"></script>
+
+<script type="text/javascript" src="javascripts/src/views/static_view.js"></script>
+<script type="text/javascript" src="javascripts/src/views/home_view.js"></script>
+<script type="text/javascript" src="javascripts/src/views/blog_view.js"></script>
+<script type="text/javascript" src="javascripts/src/views/contact_view.js"></script>
+
 <script type="text/javascript" src="javascripts/src/routers/application.js"></script>
+
 <script type="text/javascript" src="javascripts/src/index.js"></script>
 
 </html>
