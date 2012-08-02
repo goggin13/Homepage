@@ -6,8 +6,15 @@
     initialize: function() {
       return _.bindAll(this);
     },
+    renderHeaderWithContent: function(content) {
+      ($(this.el)).html("<h1>" + this.title + "</h1><hr/>").append(content);
+      return this;
+    },
+    renderStaticView: function() {
+      return this.renderHeaderWithContent(Mustache.to_html(this.template));
+    },
     render: function() {
-      ($(this.el)).html("<h1>" + this.title + "</h1><hr/>").append(Mustache.to_html(this.template));
+      this.renderStaticView();
       return this;
     }
   });

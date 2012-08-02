@@ -6,7 +6,6 @@
       return window.location.reload();
     });
     appCache = window.applicationCache;
-    console.debug("appcache");
     f = function() {
       console.debug("downloading");
       return $("#cache").attr('class', 'updating');

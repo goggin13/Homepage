@@ -1,12 +1,10 @@
 
 
 ($ document).ready ->
-  
+  # return
   ($ '#cache span.dirty').click -> window.location.reload()
   
   appCache = window.applicationCache
-  
-  console.debug "appcache"
   
   f = ->
     console.debug "downloading"

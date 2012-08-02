@@ -37,10 +37,11 @@ jQuery ->
       @show_loading()
       console.log ("about")
       
-    blog: ->ir 
+    blog: ->
+      @show_loading()
       blogs = new BlogPosts()
-      blogs.fetch().complete ->
-        @show_view(new BlogView(collection: blogs))
+      blogs.fetch().complete =>
+        @show_view new BlogsView(collection: blogs)
     
     projects: ->
       console.log("projects")

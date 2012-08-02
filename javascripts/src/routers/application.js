@@ -38,10 +38,12 @@
         return console.log("about");
       },
       blog: function() {
-        var blogs;
+        var blogs,
+          _this = this;
+        this.show_loading();
         blogs = new BlogPosts();
         return blogs.fetch().complete(function() {
-          return this.show_view(new BlogView({
+          return _this.show_view(new BlogsView({
             collection: blogs
           }));
         });

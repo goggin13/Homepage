@@ -10,7 +10,9 @@ Version    : 1.0
 Released   : 20120604
 
 -->
-<html lang="en" manifest="offline.appcache">
+<!-- <html lang="en" manifest="offline.appcache"> -->
+<html lang="en">
+
 <head>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
@@ -44,6 +46,7 @@ Released   : 20120604
 			<li><a href="#/about" class='push_nav'>About</a></li>
 			<li><a href="#/projects" class='push_nav'>Projects</a></li>
 			<li><a href="#/contact" class='push_nav'>Contact</a></li>
+			<li><a href="test.html" >Run tests</a></li>
 		</ul>
 	</div>
 </div>
@@ -64,8 +67,19 @@ Released   : 20120604
 <!-- end #footer -->
 </body>
 
-<script id="tpl_home_view" src="templates/home.js" type="text/template">
+<script id="tpl_home_view" type="text/template">
   tpl_home_view
+</script>
+
+<script id="tpl_blog_view" type="text/template">
+  <%= title %><br/>
+  <%= content %><br/>
+  <span class='expand'>Expand</span>
+</script>
+
+<script id="tpl_blogs_view" type="text/template">
+  <p>Stuff</p>
+  <ul></ul>
 </script>
 
 <script id='tpl_contact_view' type="text/template">
@@ -117,6 +131,12 @@ Released   : 20120604
 
 <div class="clear"></div>
 
+</script>
+
+<script type="text/javascript">
+  window.app = {};
+  window.app.blog_domain = 'http://localhost:3000/';
+  // window.app.blog_domain = 'http://matt-goggin.herokuapp.com/';
 </script>
 
 <script type="text/javascript" src="javascripts/frameworks/jquery-1.7.1.min.js"></script>

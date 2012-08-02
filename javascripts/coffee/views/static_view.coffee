@@ -6,7 +6,14 @@ window.StaticView = Backbone.View.extend
   initialize: ->
     _.bindAll @
   
-  render: ->
+  renderHeaderWithContent: (content) ->
     ($ @el).html("<h1>#{@title}</h1><hr/>")
-           .append (Mustache.to_html @template)
+           .append(content)
+    @
+    
+  renderStaticView: ->
+    @renderHeaderWithContent (Mustache.to_html @template)
+  
+  render: ->
+    @renderStaticView()
     @
