@@ -3,8 +3,8 @@
   jQuery(function() {
     return window.ApplicationRouter = Backbone.Router.extend({
       routes: {
-        '': 'home',
-        'index.html': 'home',
+        '': 'blog',
+        'index.html': 'blog',
         '/blog': 'blog',
         '/index.html#blog': 'blog',
         '/#blog': 'blog',
@@ -30,22 +30,24 @@
           return $box.addClass('loading').html('<img id="loading" src="images/loading.gif" alt="loading" />').fadeIn();
         });
       },
-      home: function() {
-        return this.show_view(new HomeView());
-      },
       about: function() {
         this.show_loading();
         return console.log("about");
+      },
+      show_error: function() {
+        return this.show_view(new ErrorView());
       },
       blog: function() {
         var blogs,
           _this = this;
         this.show_loading();
         blogs = new BlogPosts();
-        return blogs.fetch().complete(function() {
+        return blogs.fetch().then(function() {
           return _this.show_view(new BlogsView({
             collection: blogs
           }));
+        }).error(function() {
+          return _this.show_error();
         });
       },
       projects: function() {

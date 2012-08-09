@@ -2,15 +2,20 @@
 
   window.BlogView = Backbone.View.extend({
     template: _.template(($('#tpl_blog_view')).html()),
+    converter: new Showdown.converter(),
     events: {
-      'click .expand': 'expand'
+      'click .toggle': 'toggle'
     },
-    expand: function() {
-      this.options.parent.expandMe(this.model);
-      return console.log('expand');
+    toggle: function() {
+      this.options.expanded = !this.options.expanded;
+      return this.render();
     },
     render: function() {
-      this.$el.html(this.template(this.model.toJSON()));
+      var data;
+      data = this.model.toJSON();
+      data.content = this.converter.makeHtml(data.content);
+      data.expanded = this.options.expanded;
+      this.$el.html(this.template(data));
       return this;
     }
   });
@@ -18,25 +23,19 @@
   window.BlogsView = window.StaticView.extend({
     template: _.template(($('#tpl_blogs_view')).html()),
     title: "blog",
-    expandMe: function(model) {
-      this.collection.each(function(post) {
-        return post.set({
-          expanded: post.getId() === model.getId()
-        });
-      });
-      return this.render();
-    },
     render: function() {
-      var $ul,
+      var $ul, first,
         _this = this;
       this.renderHeaderWithContent(this.template());
       $ul = this.$el.find('ul');
+      first = true;
       this.collection.each(function(post) {
         var view;
         view = new BlogView({
           model: post,
-          parent: _this
+          expanded: first
         });
+        first = false;
         return $ul.append(view.render().el);
       });
       return this;

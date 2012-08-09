@@ -3,8 +3,8 @@ jQuery ->
 
   window.ApplicationRouter = Backbone.Router.extend
     routes:
-      '': 'home'
-      'index.html': 'home'
+      '': 'blog'
+      'index.html': 'blog'
       '/blog': 'blog'
       '/index.html#blog': 'blog'
       '/#blog': 'blog'
@@ -30,19 +30,21 @@ jQuery ->
             .html('<img id="loading" src="images/loading.gif" alt="loading" />')
             .fadeIn()
     
-    home: ->
-      @show_view(new HomeView())
-      
     about: ->
       @show_loading()
       console.log ("about")
-      
+    
+    show_error: ->
+      @show_view new ErrorView()
+    
     blog: ->
       @show_loading()
       blogs = new BlogPosts()
-      blogs.fetch().complete =>
-        @show_view new BlogsView(collection: blogs)
-    
+      blogs.fetch()
+           .then(=>
+             @show_view new BlogsView(collection: blogs))
+           .error => @show_error()
+              
     projects: ->
       console.log("projects")
     

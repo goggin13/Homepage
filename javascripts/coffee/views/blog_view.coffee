@@ -1,32 +1,34 @@
 
 window.BlogView = Backbone.View.extend
   template: _.template ($ '#tpl_blog_view').html()
+  converter: new Showdown.converter()
   events: 
-    'click .expand': 'expand'
+    'click .toggle': 'toggle'
   
-  expand: ->
-    @options.parent.expandMe @model
-    console.log('expand')
+  toggle: ->
+    @options.expanded = !@options.expanded
+    @render()
   
   render: ->
-    @$el.html (@template @model.toJSON())
+    data = @model.toJSON()
+    data.content = @converter.makeHtml data.content
+    data.expanded = @options.expanded
+    @$el.html (@template data)
     @
 
 
 window.BlogsView = window.StaticView.extend
   template: _.template ($ '#tpl_blogs_view').html()
   title: "blog"
-  
-  expandMe: (model) ->
-    @collection.each (post) ->
-      post.set expanded: (post.getId() == model.getId())
-    @render()
-    
+      
   render: ->
     @renderHeaderWithContent @template()
+    
     $ul = @$el.find('ul')
+    first = true
     @collection.each (post) =>
-      view = new BlogView model: post, parent: @
+      view = new BlogView model: post, expanded: first
+      first = false
       $ul.append view.render().el
     @
 

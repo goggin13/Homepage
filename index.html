@@ -41,7 +41,6 @@ Released   : 20120604
 	</div>
 	<div id="menu">
 		<ul>
-			<li><a href="#" class='push_nav'>Home</a></li>
 			<li><a href="#/blog" class='push_nav'>Blog</a></li>
 			<li><a href="#/about" class='push_nav'>About</a></li>
 			<li><a href="#/projects" class='push_nav'>Projects</a></li>
@@ -67,14 +66,22 @@ Released   : 20120604
 <!-- end #footer -->
 </body>
 
-<script id="tpl_home_view" type="text/template">
-  tpl_home_view
+<script id="tpl_error_view" type="text/template">
+  <p>It appears you have caught me while updating one of the content end points</p>
+  <p>I'm embarassed</p>
+  <p>Please try me again soon, or if the issue persists I'd love it if you
+     shot me an email at goggin13@gmail.com and let me know!
+  </p>
 </script>
 
 <script id="tpl_blog_view" type="text/template">
   <%= title %><br/>
-  <%= content %><br/>
-  <span class='expand'>Expand</span>
+  <% if (!expanded) { %>
+    <span class='toggle'>Expand</span>
+  <% } else { %>
+    <%= content %><br/>
+    <span class='toggle'>Collapse</span>
+  <% } %>
 </script>
 
 <script id="tpl_blogs_view" type="text/template">
@@ -143,11 +150,13 @@ Released   : 20120604
 <script type="text/javascript" src="javascripts/frameworks/underscore.js"></script>
 <script type="text/javascript" src="javascripts/frameworks/backbone.js"></script>
 <script type="text/javascript" src="javascripts/frameworks/mustache.js"></script>
+<script type="text/javascript" src="javascripts/frameworks/showdown.js"></script>
 
 <script type="text/javascript" src="javascripts/src/models/blog.js"></script>
 
 <script type="text/javascript" src="javascripts/src/views/static_view.js"></script>
 <script type="text/javascript" src="javascripts/src/views/home_view.js"></script>
+<script type="text/javascript" src="javascripts/src/views/error_view.js"></script>
 <script type="text/javascript" src="javascripts/src/views/blog_view.js"></script>
 <script type="text/javascript" src="javascripts/src/views/contact_view.js"></script>
 
