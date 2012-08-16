@@ -3,6 +3,7 @@
   window.BlogView = Backbone.View.extend({
     template: _.template(($('#tpl_blog_view')).html()),
     converter: new Showdown.converter(),
+    className: 'post',
     events: {
       'click .toggle': 'toggle'
     },
@@ -24,10 +25,10 @@
     template: _.template(($('#tpl_blogs_view')).html()),
     title: "blog",
     render: function() {
-      var $ul, first,
+      var $div, first,
         _this = this;
       this.renderHeaderWithContent(this.template());
-      $ul = this.$el.find('ul');
+      $div = this.$el.find('.posts');
       first = true;
       this.collection.each(function(post) {
         var view;
@@ -36,7 +37,7 @@
           expanded: first
         });
         first = false;
-        return $ul.append(view.render().el);
+        return $div.append(view.render().el);
       });
       return this;
     }

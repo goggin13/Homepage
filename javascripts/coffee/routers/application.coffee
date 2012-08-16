@@ -6,9 +6,6 @@ jQuery ->
       '': 'blog'
       'index.html': 'blog'
       '/blog': 'blog'
-      '/index.html#blog': 'blog'
-      '/#blog': 'blog'
-      '#blog': 'blog'
       '/projects': 'projects'
       '/about': 'about'
       '/contact': 'contact'
@@ -31,8 +28,7 @@ jQuery ->
             .fadeIn()
     
     about: ->
-      @show_loading()
-      console.log ("about")
+      @show_view new AboutView()
     
     show_error: ->
       @show_view new ErrorView()

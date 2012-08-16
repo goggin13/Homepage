@@ -392,3 +392,13 @@ a:hover {
   cursor: pointer;
 }
 
+.post {
+  border: thin solid #333;
+  padding: 10px;
+  margin: 10px;
+}
+
+#about img {
+  float: right;
+  margin: 10px;
+}

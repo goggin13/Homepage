@@ -27,7 +27,7 @@ Released   : 20120604
 <div id="header-wrapper">
 	<div id="header" class="container">
 	  
-	  <section id="cache" class='up_to_date'>
+	  <section id="cache" class='up_to_date' style="display: none">
       <span class='up_to_date'>The application is up to date</span>
       <span class='updating'>Downloading new assets...</span>
       <span class='dirty'>New assets are available; click here to get them!</span>
@@ -60,7 +60,7 @@ Released   : 20120604
 </div>
 <div id="footer">
 	<p>
-	  &copy; Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>.
+	  <a href="http://www.freecsstemplates.org">Design by FCT</a>
 	</p>
 </div>
 <!-- end #footer -->
@@ -75,18 +75,31 @@ Released   : 20120604
 </script>
 
 <script id="tpl_blog_view" type="text/template">
-  <%= title %><br/>
+  <h3><%= title %></h3>
   <% if (!expanded) { %>
     <span class='toggle'>Expand</span>
   <% } else { %>
+    <hr/>
     <%= content %><br/>
     <span class='toggle'>Collapse</span>
   <% } %>
 </script>
 
 <script id="tpl_blogs_view" type="text/template">
-  <p>Stuff</p>
-  <ul></ul>
+  <p>Random thoughts on random programming things</p>
+  <div class='posts'></div>
+</script>
+
+<script id="tpl_about_view" type="text/template">
+  <p>
+    <img src='images/headshot.png' alt="matt goggin" />
+    A graduate student at Cornell University</p>
+  <p>I love web programming, testing, code quality</p>
+  <p>
+    Most especially, working in Rails, Coffeescript, Backbone.js, and Rspec seems to make the 
+    happiest and most productive
+  </p>
+  <div class='clear'></div>
 </script>
 
 <script id='tpl_contact_view' type="text/template">
@@ -142,8 +155,8 @@ Released   : 20120604
 
 <script type="text/javascript">
   window.app = {};
-  window.app.blog_domain = 'http://localhost:3000/';
-  // window.app.blog_domain = 'http://matt-goggin.herokuapp.com/';
+  window.app.environment = window.location.href.indexOf("file:///") > -1 ? "development" : "production";
+  window.app.blog_domain = (app.environment === 'development' ? 'http://localhost:3000/' : 'http://matt-goggin.herokuapp.com/');
 </script>
 
 <script type="text/javascript" src="javascripts/frameworks/jquery-1.7.1.min.js"></script>
@@ -159,6 +172,7 @@ Released   : 20120604
 <script type="text/javascript" src="javascripts/src/views/error_view.js"></script>
 <script type="text/javascript" src="javascripts/src/views/blog_view.js"></script>
 <script type="text/javascript" src="javascripts/src/views/contact_view.js"></script>
+<script type="text/javascript" src="javascripts/src/views/about_view.js"></script>
 
 <script type="text/javascript" src="javascripts/src/routers/application.js"></script>
 

@@ -2,6 +2,7 @@
 window.BlogView = Backbone.View.extend
   template: _.template ($ '#tpl_blog_view').html()
   converter: new Showdown.converter()
+  className: 'post'
   events: 
     'click .toggle': 'toggle'
   
@@ -24,12 +25,12 @@ window.BlogsView = window.StaticView.extend
   render: ->
     @renderHeaderWithContent @template()
     
-    $ul = @$el.find('ul')
+    $div = @$el.find('.posts')
     first = true
     @collection.each (post) =>
       view = new BlogView model: post, expanded: first
       first = false
-      $ul.append view.render().el
+      $div.append view.render().el
     @
 
 window.BlogPageView = window.StaticView.extend

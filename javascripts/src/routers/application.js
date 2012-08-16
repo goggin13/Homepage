@@ -6,9 +6,6 @@
         '': 'blog',
         'index.html': 'blog',
         '/blog': 'blog',
-        '/index.html#blog': 'blog',
-        '/#blog': 'blog',
-        '#blog': 'blog',
         '/projects': 'projects',
         '/about': 'about',
         '/contact': 'contact'
@@ -31,8 +28,7 @@
         });
       },
       about: function() {
-        this.show_loading();
-        return console.log("about");
+        return this.show_view(new AboutView());
       },
       show_error: function() {
         return this.show_view(new ErrorView());
