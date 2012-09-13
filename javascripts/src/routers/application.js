@@ -47,7 +47,7 @@
         });
       },
       projects: function() {
-        return console.log("projects");
+        return this.show_view(new ProjectsView());
       },
       contact: function() {
         return this.show_view(new ContactView());

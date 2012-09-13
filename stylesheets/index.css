@@ -25,15 +25,11 @@ h1, h2, h3 {
 }
 
 h1 {
-	font-size: 2em;
+	font-size: 2.8em;
 }
 
 h2 {
-	margin: 0px;
-	padding: 0px 0px 20px 0px;
-	letter-spacing: -2px;
-	font-size: 2.8em;
-	color: #FFFFFF;
+	font-size: 2em;
 }
 
 h3 {
@@ -401,4 +397,6 @@ a:hover {
 #about img {
   float: right;
   margin: 10px;
+  border-radius: 5px;
+  border: thin solid black;
 }

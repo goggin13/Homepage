@@ -17,8 +17,7 @@ Released   : 20120604
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<!-- <title>W!11 C0D3 4 (C0FF33||B33R||$$)</title>  -->
-<title>Fullycharge by FCT</title>
+<title>W!11 C0D3 4 (C0FF33 || B33R)</title>
 <link href="stylesheets/index.css" rel="stylesheet" type="text/css" media="screen" />
 <link rel="shortcut icon" href="images/shortcut_icon.png" />
 </head>
@@ -35,8 +34,7 @@ Released   : 20120604
     </section>
     
 		<div id="logo">
-      <!-- <h1><a href="#home">W!11 C0D3 4 (C0FF33||B33R||$$)</a></h1>  -->
-      <h1><a href="#home">Fullycharge</a></h1> 
+      <h1><a href="#home">W!11 C0D3 4 (C0FF33 || B33R)</a></h1>
 		</div>
 	</div>
 	<div id="menu">
@@ -44,8 +42,8 @@ Released   : 20120604
 			<li><a href="#/blog" class='push_nav'>Blog</a></li>
 			<li><a href="#/about" class='push_nav'>About</a></li>
 			<li><a href="#/projects" class='push_nav'>Projects</a></li>
-			<li><a href="#/contact" class='push_nav'>Contact</a></li>
-			<li><a href="test.html" >Run tests</a></li>
+			<li><a href="#/contact" class='push_nav'>Links</a></li>
+			<!-- <li><a href="test.html" >Run tests</a></li> -->
 		</ul>
 	</div>
 </div>
@@ -67,7 +65,7 @@ Released   : 20120604
 </body>
 
 <script id="tpl_error_view" type="text/template">
-  <p>It appears you have caught me while updating one of the content end points</p>
+  <p>It appears you have caught me while updating one of my content end points</p>
   <p>I'm embarassed</p>
   <p>Please try me again soon, or if the issue persists I'd love it if you
      shot me an email at goggin13@gmail.com and let me know!
@@ -75,7 +73,7 @@ Released   : 20120604
 </script>
 
 <script id="tpl_blog_view" type="text/template">
-  <h3><%= title %></h3>
+  <h2><%= published_at_pretty %> | <%= title %></h2>
   <% if (!expanded) { %>
     <span class='toggle'>Expand</span>
   <% } else { %>
@@ -86,18 +84,42 @@ Released   : 20120604
 </script>
 
 <script id="tpl_blogs_view" type="text/template">
-  <p>Random thoughts on random programming things</p>
+  <p>
+    <i><b>My random thoughts on random programming things</i></b>
+  </p>
+  <p>
+    I hope you'll pardon my current small number of thoughts.  I assure you while
+    I've had many more programming related thoughts, I only put this site
+    together towards the end of summer.  Given time, I'm certain the quantity of thoughts
+    will increase.  Likely the quality will not.  
+  </p>
   <div class='posts'></div>
+</script>
+
+<script id="tpl_projects_view" type="text/template">
 </script>
 
 <script id="tpl_about_view" type="text/template">
   <p>
     <img src='images/headshot.png' alt="matt goggin" />
-    A graduate student at Cornell University</p>
-  <p>I love web programming, testing, code quality</p>
+    I am:<br/>
+    A computer science graduate student at Cornell University
+  </p>
   <p>
-    Most especially, working in Rails, Coffeescript, Backbone.js, and Rspec seems to make the 
-    happiest and most productive
+    I love:<br/>
+    learning, web programming, thorough tests, beautiful and easy to read code*
+  </p>
+  <p>
+    I dislike:<br/>
+    tight coupling, newlines before brackets {} around blocks
+  </p>  
+  <p>
+    Tools that make me the happiest are:<br/>
+    ruby, mysql, coffeescript, backbone.js, rspec
+  </p>
+  <p>
+    *i didn't say i <i>always</i> write it, but i still love it ;)  i love eating
+    healthy but i don't do that all the time either
   </p>
   <div class='clear'></div>
 </script>
@@ -173,6 +195,7 @@ Released   : 20120604
 <script type="text/javascript" src="javascripts/src/views/blog_view.js"></script>
 <script type="text/javascript" src="javascripts/src/views/contact_view.js"></script>
 <script type="text/javascript" src="javascripts/src/views/about_view.js"></script>
+<script type="text/javascript" src="javascripts/src/views/projects_view.js"></script>
 
 <script type="text/javascript" src="javascripts/src/routers/application.js"></script>
 

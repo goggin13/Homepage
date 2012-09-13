@@ -42,7 +42,7 @@ jQuery ->
            .error => @show_error()
               
     projects: ->
-      console.log("projects")
+      @show_view new ProjectsView()
     
     contact: ->
       @show_view(new ContactView())
