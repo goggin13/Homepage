@@ -60,6 +60,8 @@ jQuery ->
     projects: ->
       projects = new Projects()
       view = new ProjectsView(collection: projects)
+      
+      setTimeout @check_long_load, 2000
       projects.fetch()
         .then(=> @show_view view)
         .error(=> @show_error())
