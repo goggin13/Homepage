@@ -24,6 +24,9 @@ Released   : 20120604
 <body>
   
 <div id="header-wrapper">
+  <div id='heroku_apology'>
+    Sorry for the delay; my Heroku instance is warming back up for you.
+  </div>
 	<div id="header" class="container">
 	  
 	  <section id="cache" class='up_to_date' style="display: none">
@@ -34,7 +37,7 @@ Released   : 20120604
     </section>
     
 		<div id="logo">
-      <h1><a href="#home">W!11 C0D3 4 (C0FF33 || B33R)</a></h1>
+      <h1><a href="#blog">W!11 C0D3 4 (C0FF33 || B33R)</a></h1>
 		</div>
 	</div>
 	<div id="menu">
@@ -73,14 +76,22 @@ Released   : 20120604
 </script>
 
 <script id="tpl_blog_view" type="text/template">
-  <h2><%= published_at_pretty %> | <%= title %></h2>
   <% if (!expanded) { %>
-    <span class='toggle'>Expand</span>
+    <div class='toggle expand'></div>
   <% } else { %>
+    <div class='toggle collapse'></div>
+  <% } %>
+
+  <h2><%= published_at_pretty %> | <%= title %></h2>
+
+  <% if (expanded) { %>
     <hr/>
     <%= content %><br/>
-    <span class='toggle'>Collapse</span>
+    <div class='toggle collapse'></div>
+    <div class='clear'></div>
   <% } %>
+
+
 </script>
 
 <script id="tpl_blogs_view" type="text/template">
@@ -103,7 +114,7 @@ Released   : 20120604
   <p>
     <img src='images/headshot.png' alt="matt goggin" />
     I am:<br/>
-    A computer science graduate student at Cornell University
+    A computer science grad student at cornell
   </p>
   <p>
     I love:<br/>
@@ -119,7 +130,7 @@ Released   : 20120604
   </p>
   <p>
     *i didn't say i <i>always</i> write it, but i still love it ;)  i love eating
-    healthy but i don't do that all the time either
+    healthy but i don't do that all the time either.
   </p>
   <div class='clear'></div>
 </script>
@@ -175,6 +186,15 @@ Released   : 20120604
 
 </script>
 
+<script id="tpl_project_view" type="text/template">
+  
+  <%= name %>
+  <hr/>
+  <div class='description'><%= description %></div>
+  <img src='images/<%= screen_shot %>.png' alt='<%= name %>' />
+</script>
+
+
 <script type="text/javascript">
   window.app = {};
   window.app.environment = window.location.href.indexOf("file:///") > -1 ? "development" : "production";
@@ -188,6 +208,7 @@ Released   : 20120604
 <script type="text/javascript" src="javascripts/frameworks/showdown.js"></script>
 
 <script type="text/javascript" src="javascripts/src/models/blog.js"></script>
+<script type="text/javascript" src="javascripts/src/models/project.js"></script>
 
 <script type="text/javascript" src="javascripts/src/views/static_view.js"></script>
 <script type="text/javascript" src="javascripts/src/views/home_view.js"></script>

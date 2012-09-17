@@ -400,3 +400,50 @@ a:hover {
   border-radius: 5px;
   border: thin solid black;
 }
+
+#heroku_apology {
+  display: none;
+  background: none repeat scroll 0 0 #333333;
+  border: medium solid white;
+  border-radius: 15px 15px 15px 15px;
+  color: white;
+  font-size: 2em;
+  margin: 21px auto;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+}
+
+.toggle.expand {
+  background:url(../images/toggle-expand.png);
+}
+.toggle.collapse {
+  background:url(../images/toggle-collapse.png);
+}
+.toggle {
+  height: 32px;
+  width: 32px;
+  cursor:pointer;
+  float: right;
+}
+
+.project {
+  width: 300px;
+  padding: 15px;
+  border: thin solid black;
+  float: left;
+  margin: 15px;
+}
+.project img {
+  width: 260px;
+}
+.project .description p {
+  line-height: 100%;
+}
+.project .description {
+  display: none;
+  float: right;
+  font-size: 1.3em;
+  margin-right: 15px;
+  width: 400px;
+}

@@ -1,4 +1,13 @@
 
+$.xhrPool = [];
+$.xhrPool.abortAll = ->
+  while (request = this.pop())
+    request.abort()
+    
+$.ajaxSetup
+ beforeSend: (jqXHR) ->
+   $.xhrPool.push(jqXHR)
+
 
 ($ document).ready ->
 
@@ -32,6 +41,7 @@
   Backbone.history.start()
   
   navigateTo = (url) -> 
+    $.xhrPool.abortAll()
     router.navigate url, true
     
   ($ "a.push_nav").live 'click', ->
