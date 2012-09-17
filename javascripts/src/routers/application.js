@@ -73,6 +73,7 @@
         view = new ProjectsView({
           collection: projects
         });
+        setTimeout(this.check_long_load, 2000);
         return projects.fetch().then(function() {
           return _this.show_view(view);
         }).error(function() {

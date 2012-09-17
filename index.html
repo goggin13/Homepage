@@ -25,7 +25,8 @@ Released   : 20120604
   
 <div id="header-wrapper">
   <div id='heroku_apology'>
-    Sorry for the delay; my Heroku instance is warming back up for you.
+    Sorry for the delay; my Heroku instance is warming back up for you.<br/>
+    <span>this usually takes 5-10 seconds</span>
   </div>
 	<div id="header" class="container">
 	  
@@ -108,6 +109,8 @@ Released   : 20120604
 </script>
 
 <script id="tpl_projects_view" type="text/template">
+  <div class='projects_column' id='col_0'></div>
+  <div class='projects_column' id='col_1'></div>
 </script>
 
 <script id="tpl_about_view" type="text/template">
@@ -190,10 +193,16 @@ Released   : 20120604
   
   <%= name %>
   <hr/>
+  <img src='images/<%= screen_shot %>.png' alt='<%= name %>' />
+  
+</script>
+
+<script id="tpl_project_full_view" type="text/template">
+  <%= name %>
+  <hr/>
   <div class='description'><%= description %></div>
   <img src='images/<%= screen_shot %>.png' alt='<%= name %>' />
 </script>
-
 
 <script type="text/javascript">
   window.app = {};
@@ -202,6 +211,7 @@ Released   : 20120604
 </script>
 
 <script type="text/javascript" src="javascripts/frameworks/jquery-1.7.1.min.js"></script>
+
 <script type="text/javascript" src="javascripts/frameworks/underscore.js"></script>
 <script type="text/javascript" src="javascripts/frameworks/backbone.js"></script>
 <script type="text/javascript" src="javascripts/frameworks/mustache.js"></script>

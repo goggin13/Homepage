@@ -2,41 +2,60 @@
 window.ProjectsView = window.StaticView.extend
   template: ($ '#tpl_projects_view').html()
   title: "projects"
+  id: 'project_list'
   
   render: ->
     @renderStaticView()
-    @collection.each (project) =>
+    $col0 = @$('#col_0')
+    $col1 = @$('#col_1')
+    @collection.each (project, index) =>
       view = new ProjectView(model: project)
-      @$el.append view.render().el
+      $target = if (index % 2 == 0) then $col0 else $col1
+      $target.append view.render().el
+        
     @$el.append "<div class='clear'></div>"
     @
 
 window.ProjectView = Backbone.View.extend
   template: _.template ($ '#tpl_project_view').html()
-  converter: new Showdown.converter()
   className: 'project'
-  expanded: false
   events: 
-    'click': 'toggle'
+    'click': 'show_full'
 
-  toggle: ->
-    @expanded = !@expanded
-    width = if @expanded then 700 else 300
+  show_full: ->
+    view = new window.ProjectFullView model: @model
+    $('body').after view.render().el
+    view.fade_in()
     
-    if @expanded
-      $('html, body').animate scrollTop: @$el.offset().top, 500
-      @$el.animate width: width, 'slow', =>
-        @$('.description').fadeToggle()
-    else
-      @$('.description').fadeToggle 'slow'
-      @$el.animate width: width, 'slow'
+  render: ->
+    @$el.html (@template @model.toJSON())
+    @
 
-    @$el.toggleClass('expanded', @expanded)
-    @render()
+window.ProjectFullView = Backbone.View.extend
+  template: _.template ($ '#tpl_project_full_view').html()
+  converter: new Showdown.converter()
+  className: 'project expanded'
+  # events: 
+    # 'click': 'fade_out'
 
+  initialize: ->
+    _.bindAll @
+  
+  fade_out: ->
+    @$el.fadeOut =>
+      ($ 'body').removeClass 'faded'
+      @remove()
+  
+  fade_in: ->
+    ($ 'body').addClass 'faded'
+    height = @$el.height() / 2 * -1
+    @$el.css('margin-top', height)
+    @$el.fadeIn =>
+      ($ 'body').click =>
+        @fade_out()
+  
   render: ->
     data = @model.toJSON()
-    data.expanded = @expanded
     data.description = @converter.makeHtml data.description
     @$el.html (@template data)
     @$('a').each (idx, a) ->

@@ -3,15 +3,20 @@
   window.ProjectsView = window.StaticView.extend({
     template: ($('#tpl_projects_view')).html(),
     title: "projects",
+    id: 'project_list',
     render: function() {
-      var _this = this;
+      var $col0, $col1,
+        _this = this;
       this.renderStaticView();
-      this.collection.each(function(project) {
-        var view;
+      $col0 = this.$('#col_0');
+      $col1 = this.$('#col_1');
+      this.collection.each(function(project, index) {
+        var $target, view;
         view = new ProjectView({
           model: project
         });
-        return _this.$el.append(view.render().el);
+        $target = index % 2 === 0 ? $col0 : $col1;
+        return $target.append(view.render().el);
       });
       this.$el.append("<div class='clear'></div>");
       return this;
@@ -20,39 +25,53 @@
 
   window.ProjectView = Backbone.View.extend({
     template: _.template(($('#tpl_project_view')).html()),
-    converter: new Showdown.converter(),
     className: 'project',
-    expanded: false,
     events: {
-      'click': 'toggle'
+      'click': 'show_full'
     },
-    toggle: function() {
-      var width,
+    show_full: function() {
+      var view;
+      view = new window.ProjectFullView({
+        model: this.model
+      });
+      $('body').after(view.render().el);
+      return view.fade_in();
+    },
+    render: function() {
+      this.$el.html(this.template(this.model.toJSON()));
+      return this;
+    }
+  });
+
+  window.ProjectFullView = Backbone.View.extend({
+    template: _.template(($('#tpl_project_full_view')).html()),
+    converter: new Showdown.converter(),
+    className: 'project expanded',
+    initialize: function() {
+      return _.bindAll(this);
+    },
+    fade_out: function() {
+      var _this = this;
+      return this.$el.fadeOut(function() {
+        ($('body')).removeClass('faded');
+        return _this.remove();
+      });
+    },
+    fade_in: function() {
+      var height,
         _this = this;
-      this.expanded = !this.expanded;
-      width = this.expanded ? 700 : 300;
-      if (this.expanded) {
-        $('html, body').animate({
-          scrollTop: this.$el.offset().top
-        }, 500);
-        this.$el.animate({
-          width: width
-        }, 'slow', function() {
-          return _this.$('.description').fadeToggle();
+      ($('body')).addClass('faded');
+      height = this.$el.height() / 2 * -1;
+      this.$el.css('margin-top', height);
+      return this.$el.fadeIn(function() {
+        return ($('body')).click(function() {
+          return _this.fade_out();
         });
-      } else {
-        this.$('.description').fadeToggle('slow');
-        this.$el.animate({
-          width: width
-        }, 'slow');
-      }
-      this.$el.toggleClass('expanded', this.expanded);
-      return this.render();
+      });
     },
     render: function() {
       var data;
       data = this.model.toJSON();
-      data.expanded = this.expanded;
       data.description = this.converter.makeHtml(data.description);
       this.$el.html(this.template(data));
       this.$('a').each(function(idx, a) {
