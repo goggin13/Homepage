@@ -35,15 +35,13 @@ window.ProjectFullView = Backbone.View.extend
   template: _.template ($ '#tpl_project_full_view').html()
   converter: new Showdown.converter()
   className: 'project expanded'
-  # events: 
-    # 'click': 'fade_out'
 
   initialize: ->
     _.bindAll @
   
   fade_out: ->
+    ($ 'body').unbind('click').removeClass 'faded'
     @$el.fadeOut =>
-      ($ 'body').removeClass 'faded'
       @remove()
   
   fade_in: ->

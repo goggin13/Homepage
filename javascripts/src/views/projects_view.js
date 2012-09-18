@@ -52,8 +52,8 @@
     },
     fade_out: function() {
       var _this = this;
+      ($('body')).unbind('click').removeClass('faded');
       return this.$el.fadeOut(function() {
-        ($('body')).removeClass('faded');
         return _this.remove();
       });
     },
