@@ -13,7 +13,7 @@ jQuery ->
     remove_apology: ->
       $apology = ($ '#heroku_apology')
       if $apology.is(':visible')
-        $apology.text("thanks for waiting!!").fadeOut ->
+        $apology.text("thanks for your patience!!").fadeOut ->
           $apology.remove()
           
     show_view: (view, callback) ->  
@@ -58,6 +58,7 @@ jQuery ->
         .error(=> @show_error())
               
     projects: ->
+      @show_loading()
       projects = new Projects()
       view = new ProjectsView(collection: projects)
       

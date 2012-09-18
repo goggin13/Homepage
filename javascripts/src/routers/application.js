@@ -14,7 +14,7 @@
         var $apology;
         $apology = $('#heroku_apology');
         if ($apology.is(':visible')) {
-          return $apology.text("thanks for waiting!!").fadeOut(function() {
+          return $apology.text("thanks for your patience!!").fadeOut(function() {
             return $apology.remove();
           });
         }
@@ -69,6 +69,7 @@
       projects: function() {
         var projects, view,
           _this = this;
+        this.show_loading();
         projects = new Projects();
         view = new ProjectsView({
           collection: projects
