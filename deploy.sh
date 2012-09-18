@@ -1,6 +1,7 @@
 
 # ruby write_manifest.rb
 # echo "wrote manifest"
+
 ./s3/s3cmd put --acl-public --recursive ~/projects/coffee/home/javascripts/frameworks/ s3://www.mattgoggin.com/javascripts/frameworks/
 ./s3/s3cmd put --acl-public --recursive ~/projects/coffee/home/javascripts/src/ s3://www.mattgoggin.com/javascripts/src/
 ./s3/s3cmd put --acl-public --recursive ~/projects/coffee/home/stylesheets/ s3://www.mattgoggin.com/stylesheets/
