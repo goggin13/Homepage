@@ -1,6 +1,8 @@
 
-# ruby write_manifest.rb
-# echo "wrote manifest"
+
+./build_production_js.sh
+
+ruby switch_out_javascript.rb -prod
 
 ./s3/s3cmd put --acl-public --recursive ~/projects/coffee/home/javascripts/frameworks/ s3://www.mattgoggin.com/javascripts/frameworks/
 ./s3/s3cmd put --acl-public --recursive ~/projects/coffee/home/javascripts/src/ s3://www.mattgoggin.com/javascripts/src/
@@ -12,4 +14,4 @@
 ./s3/s3cmd put --acl-public --recursive ~/projects/coffee/home/index.html s3://www.mattgoggin.com/index.html
 ./s3/s3cmd put --acl-public --recursive ~/projects/coffee/home/index.html s3://www.mattgoggin.com/404.html
 
-# need custom appcache header to upload appcache manifest
+ruby switch_out_javascript.rb -dev
