@@ -15,6 +15,9 @@ window.BlogView = Backbone.View.extend
     data.content = @converter.makeHtml data.content
     data.expanded = @options.expanded
     @$el.html (@template data)
+    @$('a').each (idx, a) ->
+      # no way to encode this in markdown, so this is nicer for now
+      ($ a).attr('target', '_blank')    
     @
 
 

@@ -17,6 +17,9 @@
       data.content = this.converter.makeHtml(data.content);
       data.expanded = this.options.expanded;
       this.$el.html(this.template(data));
+      this.$('a').each(function(idx, a) {
+        return ($(a)).attr('target', '_blank');
+      });
       return this;
     }
   });
