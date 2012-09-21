@@ -8,7 +8,7 @@ describe "blog page" do
   end
   
   it "should list all the current blog entries" do
-    page.should have_css '.post', :count => 3
+    page.should have_css '.post', :count => 4
   end
 
   it "should toggle entries closed and open" do

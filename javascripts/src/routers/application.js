@@ -2,6 +2,7 @@
 
   jQuery(function() {
     return window.ApplicationRouter = Backbone.Router.extend({
+      accetable_heroku_wait: 3000,
       routes: {
         '': 'blog',
         'index.html': 'blog',
@@ -59,7 +60,7 @@
         view = new BlogsView({
           collection: blogs
         });
-        setTimeout(this.check_long_load, 2000);
+        setTimeout(this.check_long_load, this.accetable_heroku_wait);
         return blogs.fetch().then(function() {
           return _this.show_view(view);
         }).error(function() {
@@ -74,7 +75,7 @@
         view = new ProjectsView({
           collection: projects
         });
-        setTimeout(this.check_long_load, 2000);
+        setTimeout(this.check_long_load, this.accetable_heroku_wait);
         return projects.fetch().then(function() {
           return _this.show_view(view);
         }).error(function() {

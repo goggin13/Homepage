@@ -2,6 +2,7 @@
 jQuery ->
 
   window.ApplicationRouter = Backbone.Router.extend
+    accetable_heroku_wait: 3000
     routes:
       '': 'blog'
       'index.html': 'blog'
@@ -52,7 +53,7 @@ jQuery ->
       blogs = new BlogPosts()
       view = new BlogsView(collection: blogs)
       
-      setTimeout @check_long_load, 2000
+      setTimeout @check_long_load, @accetable_heroku_wait
       blogs.fetch()
         .then(=> @show_view view)
         .error(=> @show_error())
@@ -62,7 +63,7 @@ jQuery ->
       projects = new Projects()
       view = new ProjectsView(collection: projects)
       
-      setTimeout @check_long_load, 2000
+      setTimeout @check_long_load, @accetable_heroku_wait
       projects.fetch()
         .then(=> @show_view view)
         .error(=> @show_error())
