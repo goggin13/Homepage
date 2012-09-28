@@ -464,6 +464,8 @@ a:hover {
 }
 .project.expanded img {
   width: 560px;
+  border: thin solid white;
+  border-radius: 10px;  
 }
 .project.expanded {
   background: none repeat scroll 0 0 white;
