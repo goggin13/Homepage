@@ -25,7 +25,10 @@
 
   window.BlogPosts = Backbone.Collection.extend({
     url: "" + window.app.blog_domain + "posts.json",
-    model: BlogPost
+    model: BlogPost,
+    parse: function(json) {
+      return json;
+    }
   });
 
 }).call(this);

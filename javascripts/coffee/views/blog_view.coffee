@@ -8,8 +8,19 @@ window.BlogView = Backbone.View.extend
   
   toggle: ->
     @options.expanded = !@options.expanded
+    if @options.expanded
+      window.navigateTo "#/blog/#{@model.getId()}", true
+    else
+      window.navigateTo "#/blog", true
     @render()
   
+  hide: ->
+    @options.expanded = false
+    @render()
+
+  scroll_to: ->
+    $('html, body').animate(scrollTop: @$el.offset().top, 500);
+    
   render: ->
     data = @model.toJSON()
     data.content = @converter.makeHtml data.content
@@ -24,16 +35,25 @@ window.BlogView = Backbone.View.extend
 window.BlogsView = window.StaticView.extend
   template: _.template ($ '#tpl_blogs_view').html()
   title: "blog"
-      
+  
+  initialize: ->
+    _.bindAll @
+    @views = {}
+  
+  toggle_post: (id) -> 
+    _.each @views, (v) => v.hide()
+    @views[id].toggle()
+    @views[id].scroll_to()
+  
   render: ->
     @renderHeaderWithContent @template()
     
     $div = @$el.find('.posts')
     first = true
     @collection.each (post) =>
-      view = new BlogView model: post, expanded: first
+      @views[post.getId()] = new BlogView model: post, expanded: first
       first = false
-      $div.append view.render().el
+      $div.append @views[post.getId()].render().el
     @
 
 window.BlogPageView = window.StaticView.extend

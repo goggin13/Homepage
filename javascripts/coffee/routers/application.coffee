@@ -6,6 +6,7 @@ jQuery ->
     routes:
       '': 'blog'
       'index.html': 'blog'
+      '/blog/:id': 'blog'
       '/blog': 'blog'
       '/projects': 'projects'
       '/about': 'about'
@@ -23,8 +24,8 @@ jQuery ->
         $box.removeClass('loading')
             .html("")
             .append(view.render().el)
-            .fadeIn()
-        callback() if callback
+            .fadeIn 1500, =>
+              callback() if callback
       
     transition_content: (callback) ->
       $box = ($ '#box_content')
@@ -48,14 +49,16 @@ jQuery ->
       if ($ '.loading').is(':visible')
         ($ '#heroku_apology').fadeIn()
     
-    blog: ->
+    blog: (id) ->
       @show_loading()
       blogs = new BlogPosts()
       view = new BlogsView(collection: blogs)
       
       setTimeout @check_long_load, @accetable_heroku_wait
       blogs.fetch()
-        .then(=> @show_view view)
+        .then(=> @show_view view, =>
+          view.toggle_post(id) if id
+        )
         .error(=> @show_error())
               
     projects: ->

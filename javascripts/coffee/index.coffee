@@ -40,9 +40,9 @@ $.ajaxSetup
   router = new ApplicationRouter()
   Backbone.history.start()
   
-  navigateTo = (url) -> 
+  window.navigateTo = (url, suppress_trigger) -> 
     $.xhrPool.abortAll()
-    router.navigate url, true
+    router.navigate url, {trigger: !suppress_trigger}
     
   ($ "a.push_nav").live 'click', ->
     navigateTo ($ this).attr('href')

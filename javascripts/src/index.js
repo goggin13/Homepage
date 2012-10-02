@@ -18,12 +18,14 @@
   });
 
   ($(document)).ready(function() {
-    var navigateTo, router;
+    var router;
     router = new ApplicationRouter();
     Backbone.history.start();
-    navigateTo = function(url) {
+    window.navigateTo = function(url, suppress_trigger) {
       $.xhrPool.abortAll();
-      return router.navigate(url, true);
+      return router.navigate(url, {
+        trigger: !suppress_trigger
+      });
     };
     return ($("a.push_nav")).live('click', function() {
       navigateTo(($(this)).attr('href'));

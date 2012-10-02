@@ -17,5 +17,7 @@ window.BlogPost = Backbone.Model.extend
 window.BlogPosts = Backbone.Collection.extend
   url: "#{window.app.blog_domain}posts.json"
   model: BlogPost
-
+  
+  parse: (json) ->
+    json
   

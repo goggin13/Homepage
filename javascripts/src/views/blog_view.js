@@ -9,7 +9,21 @@
     },
     toggle: function() {
       this.options.expanded = !this.options.expanded;
+      if (this.options.expanded) {
+        window.navigateTo("#/blog/" + (this.model.getId()), true);
+      } else {
+        window.navigateTo("#/blog", true);
+      }
       return this.render();
+    },
+    hide: function() {
+      this.options.expanded = false;
+      return this.render();
+    },
+    scroll_to: function() {
+      return $('html, body').animate({
+        scrollTop: this.$el.offset().top
+      }, 500);
     },
     render: function() {
       var data;
@@ -27,6 +41,18 @@
   window.BlogsView = window.StaticView.extend({
     template: _.template(($('#tpl_blogs_view')).html()),
     title: "blog",
+    initialize: function() {
+      _.bindAll(this);
+      return this.views = {};
+    },
+    toggle_post: function(id) {
+      var _this = this;
+      _.each(this.views, function(v) {
+        return v.hide();
+      });
+      this.views[id].toggle();
+      return this.views[id].scroll_to();
+    },
     render: function() {
       var $div, first,
         _this = this;
@@ -34,13 +60,12 @@
       $div = this.$el.find('.posts');
       first = true;
       this.collection.each(function(post) {
-        var view;
-        view = new BlogView({
+        _this.views[post.getId()] = new BlogView({
           model: post,
           expanded: first
         });
         first = false;
-        return $div.append(view.render().el);
+        return $div.append(_this.views[post.getId()].render().el);
       });
       return this;
     }

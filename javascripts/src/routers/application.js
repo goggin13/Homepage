@@ -6,6 +6,7 @@
       routes: {
         '': 'blog',
         'index.html': 'blog',
+        '/blog/:id': 'blog',
         '/blog': 'blog',
         '/projects': 'projects',
         '/about': 'about',
@@ -24,8 +25,9 @@
         var _this = this;
         this.remove_apology();
         return this.transition_content(function($box) {
-          $box.removeClass('loading').html("").append(view.render().el).fadeIn();
-          if (callback) return callback();
+          return $box.removeClass('loading').html("").append(view.render().el).fadeIn(1500, function() {
+            if (callback) return callback();
+          });
         });
       },
       transition_content: function(callback) {
@@ -52,7 +54,7 @@
       check_long_load: function() {
         if (($('.loading')).is(':visible')) return ($('#heroku_apology')).fadeIn();
       },
-      blog: function() {
+      blog: function(id) {
         var blogs, view,
           _this = this;
         this.show_loading();
@@ -62,7 +64,9 @@
         });
         setTimeout(this.check_long_load, this.accetable_heroku_wait);
         return blogs.fetch().then(function() {
-          return _this.show_view(view);
+          return _this.show_view(view, function() {
+            if (id) return view.toggle_post(id);
+          });
         }).error(function() {
           return _this.show_error();
         });
