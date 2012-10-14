@@ -6,7 +6,7 @@ window.Project = Backbone.Model.extend
   
   
 window.Projects = Backbone.Collection.extend
-  url: "#{window.app.blog_domain}projects.json"
+  url: "#{window.app.blog_domain}projects.json?callback=?"
   model: Project
 
   
