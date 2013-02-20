@@ -9,7 +9,7 @@ describe "projects page" do
   end
   
   it "should list all the current projects" do
-    page.should have_css '.project', :count => 6
+    page.should have_css '.project', :count => 8
   end
 
   it "should toggle projects closed and open" do

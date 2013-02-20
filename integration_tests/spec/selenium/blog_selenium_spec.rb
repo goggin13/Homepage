@@ -8,7 +8,7 @@ describe "blog page" do
   end
   
   it "should list all the current blog entries" do
-    page.should have_css '.post', :count => 6
+    page.should have_css '.post', :count => 7
   end
 
   it "should toggle entries closed and open, which should update the url" do
@@ -19,7 +19,7 @@ describe "blog page" do
     
     find('.toggle.expand').click
     page.should have_css '.toggle.collapse'
-    current_url.should == "http://www.mattgoggin.com/#/blog/50da6eec1a0e090200000001"
+    current_url.should == "http://www.mattgoggin.com/#/blog/50ee5751164d630200000001"
     
     find('.toggle.collapse').click
     page.should_not have_css '.toggle.collapse'
