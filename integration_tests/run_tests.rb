@@ -1,5 +1,4 @@
 
-
 file_name = "run_tests_#{Time.now.to_i}.html"
 result_path = "/Users/mg343/projects/coffee/home/integration_tests/spec/logs/#{file_name}"
 
