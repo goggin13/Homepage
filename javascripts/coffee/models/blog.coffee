@@ -3,7 +3,7 @@
 window.BlogPost = Backbone.Model.extend
   getId: -> @get '_id'
   getTitle: -> @get 'title'
-  getPublishedAt: -> @get 'published_at'
+  getPublishedAt: -> @get 'published'
   getPublishedAtPretty: ->
     d = new Date @getPublishedAt()
     "#{d.getMonth() + 1} - #{d.getDate()}"
