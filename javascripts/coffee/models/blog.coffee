@@ -12,12 +12,9 @@ window.BlogPost = Backbone.Model.extend
     hash = Backbone.Model.prototype.toJSON.call @
     hash.published_at_pretty = @getPublishedAtPretty()
     hash
-    
+  
+  parse: (json) -> json.post
   
 window.BlogPosts = Backbone.Collection.extend
   url: "#{window.app.blog_domain}posts.json?callback=?"
   model: BlogPost
-  
-  parse: (json) ->
-    json
-  

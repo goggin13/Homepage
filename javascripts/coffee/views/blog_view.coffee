@@ -23,6 +23,7 @@ window.BlogView = Backbone.View.extend
     
   render: ->
     data = @model.toJSON()
+    console.log(data)
     data.content = @converter.makeHtml data.content
     data.expanded = @options.expanded
     @$el.html (@template data)
