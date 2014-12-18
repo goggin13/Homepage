@@ -1,0 +1,14 @@
+<% if (!expanded) { %>
+  <div class='toggle expand'></div>
+<% } else { %>
+  <div class='toggle collapse'></div>
+<% } %>
+
+<h2><%= publishedAt %> | <%= title %></h2>
+
+<% if (expanded) { %>
+  <hr/>
+  <%= content %><br/>
+  <div class='toggle collapse'></div>
+  <div class='clear'></div>
+<% } %>

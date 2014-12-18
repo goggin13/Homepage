@@ -2,3 +2,4 @@ s3/*
 compiler.jar
 javascripts/application.js
 javascripts/src
+.s3_credentials.yml

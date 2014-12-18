@@ -401,24 +401,6 @@ a:hover {
   border: thin solid black;
 }
 
-#heroku_apology {
-  display: none;
-  background: none repeat scroll 0 0 #333333;
-  border: medium solid white;
-  border-radius: 15px 15px 15px 15px;
-  color: white;
-  font-size: 2em;
-  margin: 21px auto;
-  padding: 10px;
-  position: absolute;
-  text-align: center;
-}
-
-#heroku_apology span {
-  font-style: italic;
-  font-size: .7em;
-}
-
 .toggle.expand {
   background:url(../images/toggle-expand.png);
 }

@@ -4,7 +4,7 @@ Design by Free CSS Templates
 http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 3.0 License
 
-Name       : FullyCharge 
+Name       : FullyCharge
 Description: A two-column, fixed-width design with dark color scheme.
 Version    : 1.0
 Released   : 20120604
@@ -14,7 +14,6 @@ Released   : 20120604
 <html lang="en">
 
 <head>
-
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -22,43 +21,21 @@ Released   : 20120604
   <title>W!11 C0D3 4 (C0FF33 || B33R)</title>
   <link href="stylesheets/index.css" rel="stylesheet" type="text/css" media="screen" />
   <link rel="shortcut icon" href="images/shortcut_icon.png" />
-
-  <script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-35042811-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-  </script>
-
 </head>
 
 <body>
-  
+
 <div id="header-wrapper">
-  <div id='heroku_apology'>
-    Sorry for the delay; my Heroku instance is warming back up for you.<br/>
-    <span>this usually takes 5-10 seconds</span>
-  </div>
 	<div id="header" class="container">
-	      
 		<div id="logo">
       <h1><a href="#blog">W!11 C0D3 4 (C0FF33 || B33R)</a></h1>
 		</div>
 	</div>
 	<div id="menu">
 		<ul>
-			<li><a href="#/blog" class='push_nav'>Blog</a></li>
-			<li><a href="#/about" class='push_nav'>About</a></li>
-			<li><a href="#/projects" class='push_nav'>Projects</a></li>
-			<li><a href="#/contact" class='push_nav'>Links</a></li>
-			<!-- <li><a href="test.html" >Run tests</a></li> -->
+			<li><a href="#/blog">Blog</a></li>
+			<li><a href="#/about">About</a></li>
+			<li><a href="#/links">Links</a></li>
 		</ul>
 	</div>
 </div>
@@ -77,173 +54,31 @@ Released   : 20120604
 	</p>
 </div>
 <!-- end #footer -->
+
+  <script type="text/javascript">
+    window.rootPath = window.location.pathname.indexOf("staging") > 0 ? "/staging/" : "/";
+  </script>
+
+  <!-- include source files here... -->
+  <script src="javascripts/frameworks/jquery-2.1.1.min.js "></script>
+  <script src="javascripts/frameworks/underscore-1.7.0.min.js"></script>
+  <script src="javascripts/frameworks/backbone-1.1.2.min.js"></script>
+  <script src="javascripts/frameworks/showdown.js"></script>
+
+  <script src="javascripts/app/models/Template.js"></script>
+
+  <!-- routers -->
+  <script src="javascripts/app/index.js"></script>
+
+  <!-- views -->
+  <script src="javascripts/app/views/AboutView.js"></script>
+  <script src="javascripts/app/views/BlogView.js"></script>
+  <script src="javascripts/app/views/BlogsView.js"></script>
+  <script src="javascripts/app/views/LinksView.js"></script>
+
+  <!-- models -->
+  <script src="javascripts/app/models/Blog.js"></script>
+  <script src="javascripts/app/models/Blogs.js"></script>
+
 </body>
-
-<script id="tpl_error_view" type="text/template">
-  <p>It appears you have caught me while updating one of my content end points</p>
-  <p>I'm embarassed</p>
-  <p>Please try me again soon, or if the issue persists I'd love it if you
-     shot me an email at goggin13@gmail.com and let me know!
-  </p>
-</script>
-
-<script id="tpl_blog_view" type="text/template">
-  <% if (!expanded) { %>
-    <div class='toggle expand'></div>
-  <% } else { %>
-    <div class='toggle collapse'></div>
-  <% } %>
-
-  <h2><%= published_at_pretty %> | <%= title %></h2>
-
-  <% if (expanded) { %>
-    <hr/>
-    <%= content %><br/>
-    <div class='toggle collapse'></div>
-    <div class='clear'></div>
-  <% } %>
-
-
-</script>
-
-<script id="tpl_blogs_view" type="text/template">
-  <p>
-    <i><b>My random thoughts on random programming things</i></b>
-  </p>
-  <p>
-    I hope you'll pardon my current small number of entries.  I assure you while
-    I've had many more programming related thoughts, I only put this site
-    together towards the end of summer.  Given time, I'm certain the quantity of thoughts
-    will increase.  Likely the quality will not.  
-  </p>
-  <div class='posts'></div>
-</script>
-
-<script id="tpl_about_view" type="text/template">
-  <p>
-    <img src='images/headshot.png' alt="matt goggin" />
-    I am:<br/>
-    A computer science grad student at cornell
-  </p>
-  <p>
-    I love:<br/>
-    learning, web programming, thorough tests, beautiful and easy to read code*
-  </p>
-  <p>
-    I dislike:<br/>
-    tight coupling, newlines before brackets {} around blocks
-  </p>  
-  <p>
-    Tools that make me the happiest are:<br/>
-    ruby, mysql, coffeescript, backbone.js, rspec
-  </p>
-  <p>
-    *i didn't say i <i>always</i> write it, but i still love it ;)  i love eating
-    healthy but i don't do that all the time either.
-  </p>
-  <div class='clear'></div>
-</script>
-
-<script id='tpl_contact_view' type="text/template">
-<div class="contact_link">
-	<a target='_blank' href="http://stackoverflow.com/users/244355/goggin13">
-		<img src="http://stackoverflow.com/users/flair/244355.png" 
-				 width="208" 
-				 height="58" 
-				 alt="profile for goggin13 at Stack Overflow, Q&amp;A for professional and enthusiast programmers" 
-				 title="profile for goggin13 at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
-  </a>
-</div>
-
-<div class="contact_link">
-  <a target='_blank' href='http://www.linkedin.com/profile/view?id=56436623'>
-    <img src="images/linkedin.jpeg" />
-  </a>
-</div>
-
-<div class="contact_link">		    
-  <a target='_blank' href='https://github.com/goggin13'>
-    <img src="images/github.png" />
-  </a>
-</div>
-
-<div class="contact_link">	      
-	<a target='_blank' href='http://www.facebook.com/profile.php?id=32701378'>
-		<img src="images/facebook.png" />
-	</a>
-</div>
-
-<div class="contact_link">	      
-	<a target='_blank' href='http://projecteuler.net'>
-		<img src="http://projecteuler.net/profile/goggin13.png" />
-	</a>
-</div>
-
-<div class="contact_link">	      
-	<a target='_blank' href='http://www.meetup.com/mysqlnyc/members/48860722'>
-		<img src="images/meetup.png" />
-	</a>
-</div>
-
-<div class="contact_link">	      
-	<a target='_blank' href='mailto:goggin13@gmail.com?Subject=Hello World'>
-		<img src="images/gmail.png" />
-	</a>
-</div>
-
-<div class="clear"></div>
-
-</script>
-
-<script id="tpl_projects_view" type="text/template">
-  <p>
-    <i><b>things i've hacked on recently</i></b>
-  </p>
-  <div class='projects_column' id='col_0'></div>
-  <div class='projects_column' id='col_1'></div>
-</script>
-
-<script id="tpl_project_view" type="text/template">
-  
-  <%= name %>
-  <hr/>
-  <img src='images/<%= screen_shot %>.png' alt='<%= name %>' />
-  
-</script>
-
-<script id="tpl_project_full_view" type="text/template">
-  <%= name %>
-  <hr/>
-  <div class='description'><%= description %></div>
-  <img src='images/<%= screen_shot %>.png' alt='<%= name %>' />
-</script>
-
-<script type="text/javascript">
-  window.app = {};
-  window.app.environment = window.location.href.indexOf("file:///") > -1 ? "development" : "production";
-  window.app.blog_domain = (app.environment === 'development' ? 'http://localhost:3000/' : 'http://matt-goggin.herokuapp.com/');
-</script>
- 
-<script type="text/javascript" src="javascripts/frameworks/jquery-1.7.1.min.js"></script>
-
-<script type="text/javascript" src="javascripts/frameworks/underscore.js"></script>
-<script type="text/javascript" src="javascripts/frameworks/backbone.js"></script>
-<script type="text/javascript" src="javascripts/frameworks/mustache.js"></script>
-<script type="text/javascript" src="javascripts/frameworks/showdown.js"></script>
-
-<script type="text/javascript" src="javascripts/src/models/blog.js"></script>
-<script type="text/javascript" src="javascripts/src/models/project.js"></script>
-
-<script type="text/javascript" src="javascripts/src/views/static_view.js"></script>
-<script type="text/javascript" src="javascripts/src/views/home_view.js"></script>
-<script type="text/javascript" src="javascripts/src/views/error_view.js"></script>
-<script type="text/javascript" src="javascripts/src/views/blog_view.js"></script>
-<script type="text/javascript" src="javascripts/src/views/contact_view.js"></script>
-<script type="text/javascript" src="javascripts/src/views/about_view.js"></script>
-<script type="text/javascript" src="javascripts/src/views/projects_view.js"></script>
-
-<script type="text/javascript" src="javascripts/src/routers/application.js"></script>
-
-<script type="text/javascript" src="javascripts/src/index.js"></script>
-
 </html>

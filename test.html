@@ -1,73 +1,53 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Jasmine Spec Runner v2.1.2</title>
 
-  <title>Backbone Boilerplate Jasmine Test Suite</title>
+  <link rel="shortcut icon" type="image/png" href="javascripts/frameworks/jasmine-2.1.2/lib/jasmine_favicon.png">
+  <link rel="stylesheet" href="javascripts/frameworks/jasmine-2.1.2/lib/jasmine.css">
 
-  <!-- Jasmine styles -->
-  <link rel="stylesheet" href="stylesheets/jasmine.css">
-  <link rel="SHORTCUT ICON" href="images/jasmine_favicon.png"/>
-  
+  <script src="javascripts/frameworks/jasmine-2.1.2/lib/jasmine.js"></script>
+  <script src="javascripts/frameworks/jasmine-2.1.2/lib/jasmine-html.js"></script>
+  <script src="javascripts/frameworks/jasmine-2.1.2/lib/boot.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript">
+    window.rootPath = window.location.pathname.indexOf("staging") > 0 ? "/staging/" : "/";
+  </script>
+
+  <script src="javascripts/frameworks/jquery-2.1.1.min.js "></script>
+  <script src="javascripts/frameworks/underscore-1.7.0.min.js"></script>
+  <script src="javascripts/frameworks/backbone-1.1.2.min.js"></script>
+  <script src="javascripts/frameworks/showdown.js"></script>
+
+  <script src="javascripts/app/models/Template.js"></script>
+
+  <!-- views -->
+  <script src="javascripts/app/views/BlogView.js"></script>
+  <script src="javascripts/app/views/BlogsView.js"></script>
+  <script src="javascripts/app/views/AboutView.js"></script>
+  <script src="javascripts/app/views/LinksView.js"></script>
+
+  <!-- models -->
+  <script src="javascripts/app/models/Blog.js"></script>
+  <script src="javascripts/app/models/Blogs.js"></script>
+
+  <!-- include spec files here... -->
+  <script src="javascripts/spec/SpecHelper.js"></script>
+
+  <script src="javascripts/spec/models/TemplateSpec.js"></script>
+
+  <script src="javascripts/spec/models/BlogSpec.js"></script>
+  <script src="javascripts/spec/models/BlogsSpec.js"></script>
+
+  <script src="javascripts/spec/views/BlogViewSpec.js"></script>
+  <script src="javascripts/spec/views/BlogsViewSpec.js"></script>
+  <script src="javascripts/spec/views/AboutViewSpec.js"></script>
+  <script src="javascripts/spec/views/LinksViewSpec.js"></script>
+
 </head>
 
 <body>
-  <a href="index.html">Back Home</a>
-  <!-- Testing libs -->
-  <script type="text/javascript">
-    window.app = {};
-    window.app.blog_domain = 'http://localhost:3000/';
-    // window.app.blog_domain = 'http://matt-goggin.herokuapp.com/';
-  </script>
-  
-  <script src="javascripts/frameworks/jasmine.js"></script>
-  <script src="javascripts/frameworks/jasmine-html.js"></script>
-  <script src="javascripts/frameworks/sinon-1.4.0.js"></script>
-
-  <!-- Application libs -->
-  <script type="text/javascript" src="javascripts/frameworks/jquery-1.7.1.min.js"></script>
-  <script type="text/javascript" src="javascripts/frameworks/underscore.js"></script>
-  <script type="text/javascript" src="javascripts/frameworks/backbone.js"></script>
-  <script type="text/javascript" src="javascripts/frameworks/mustache.js"></script>
-
-  <!-- Application Files -->
-  <script type="text/javascript" src="javascripts/src/models/blog.js"></script>
-
-  <!-- Declare your spec files to be run here -->
-  <script type="text/javascript" src="javascripts/src/specs/blog_spec.js"></script>
-  
-  <script type="text/javascript">
-    var jsApiReporter;
-    (function() {
-      var jasmineEnv = jasmine.getEnv();
-
-      jsApiReporter = new jasmine.JsApiReporter();
-      var trivialReporter = new jasmine.TrivialReporter();
-
-      jasmineEnv.addReporter(jsApiReporter);
-      jasmineEnv.addReporter(trivialReporter);
-
-      jasmineEnv.specFilter = function(spec) {
-        return trivialReporter.specFilter(spec);
-      };
-
-      var currentWindowOnload = window.onload;
-
-      window.onload = function() {
-        if (currentWindowOnload) {
-          currentWindowOnload();
-        }
-        execJasmine();
-      };
-
-      function execJasmine() {
-        jasmineEnv.execute();
-      }
-
-    })();
-  </script>
-  </script>
 </body>
 </html>
